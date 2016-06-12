@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/extrem?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
+    <mapping resource="com/cinemaextrem/model/Funcion.hbm.xml"/>
+    <mapping resource="com/cinemaextrem/model/Pelicoment.hbm.xml"/>
+    <mapping resource="com/cinemaextrem/model/Entrada.hbm.xml"/>
+    <mapping resource="com/cinemaextrem/model/Pelicula.hbm.xml"/>
+    <mapping resource="com/cinemaextrem/model/Precios.hbm.xml"/>
+    <mapping resource="com/cinemaextrem/model/Pelipuntos.hbm.xml"/>
+    <mapping resource="com/cinemaextrem/model/Sala.hbm.xml"/>
+    <mapping resource="com/cinemaextrem/model/Factura.hbm.xml"/>
+    <mapping resource="com/cinemaextrem/model/Pcanje.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

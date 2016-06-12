@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/06/2016 02:41:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.cinemaextrem.model.Factura" table="factura" catalog="extrem" optimistic-lock="version">
+        <id name="idFac" type="java.lang.Integer">
+            <column name="idFac" />
+            <generator class="identity" />
+        </id>
+        <property name="idFun" type="int">
+            <column name="idFun" not-null="true" />
+        </property>
+        <property name="fechFac" type="timestamp">
+            <column name="fechFac" length="19" />
+        </property>
+        <property name="tipFac" type="string">
+            <column name="tipFac" length="10">
+                <comment>ONLINE EN CASO DE COMPRA CORRESPONDIENTE, Y EL CODIGO DEL VENDEDOR SI ES POR VENTANILLA</comment>
+            </column>
+        </property>
+        <property name="idCom" type="string">
+            <column name="idCom" length="10">
+                <comment>id comprador so es que alguien lo compra, si es por ventanilla es vacio</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

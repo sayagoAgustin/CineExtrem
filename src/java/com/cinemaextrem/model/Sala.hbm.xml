@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/06/2016 02:41:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.cinemaextrem.model.Sala" table="sala" catalog="extrem" optimistic-lock="version">
+        <id name="nroSala" type="int">
+            <column name="NroSala" />
+            <generator class="assigned" />
+        </id>
+        <property name="capacidadS" type="java.lang.Integer">
+            <column name="capacidadS" />
+        </property>
+        <property name="tipoDeProy" type="string">
+            <column name="tipoDeProy" length="2" />
+        </property>
+        <set name="funcions" table="funcion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="nroSala" not-null="true" />
+            </key>
+            <one-to-many class="com.cinemaextrem.model.Funcion" />
+        </set>
+    </class>
+</hibernate-mapping>

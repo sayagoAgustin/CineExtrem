@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <body>
+        <ui:composition template="/resources/templates/default/principalTemp.xhtml">
+            <ui:define name="content">
+
+                <h:form id="formActualizarFoto" enctype="multipart/form-data">
+
+                    <h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
+                        <h:outputLabel value="Titulo" for="pelTitulo"/>
+                        <h:inputText label="Titulo" value="#{altaPeliBean.peli.titPel}" 
+                                     id="pelTitulo" required="true"/>
+                        <h:message for="pelTitulo"/>
+
+                        <h:outputLabel value="Genero" for="peliGen"/>
+                        <h:selectOneMenu value="#{altaPeliBean.peli.genPel}" id="peliGen" required="true">
+                            <f:selectItem itemValue="animacion" itemLabel="animacion"/>
+                            <f:selectItem itemValue="aventura" itemLabel="aventura"/>
+                            <f:selectItem itemValue="ciencia ficción" itemLabel="ciencia ficción"/>
+                            <f:selectItem itemValue="comedia" itemLabel="comedia"/>
+                            <f:selectItem itemValue="drama" itemLabel="drama"/>
+                            <f:selectItem itemValue="fantasía" itemLabel="fantasía"/>
+                            <f:selectItem itemValue="Thriller" itemLabel="Thriller "/>
+                        </h:selectOneMenu>
+                        <h:message for="peliGen"/>
+                        
+                        
+                        <h:outputLabel value="Director" for="pelDire"/>
+                        <h:inputText label="Director" value="#{altaPeliBean.peli.dirPel}" 
+                                     id="pelDire"/>
+                        <h:message for="pelDire"/>
+                        
+                        <h:outputLabel value="Duracion (min)" for="pelDur"/>
+                        <p:spinner id="pelDur" value="#{altaPeliBean.peli.durPeli}" 
+                                   required="true" />
+                        <h:message for="pelDur"/>
+                        
+                        <h:outputLabel value="Clasificacion" for="peliClass"/>
+                        <h:selectOneMenu value="#{altaPeliBean.peli.claPeli}" id="peliClass" required="true">
+                            <f:selectItem itemValue="ATP" itemLabel="Apta para tido publico"/>
+                            <f:selectItem itemValue="+13" itemLabel="Mayores de 13 años"/>
+                            <f:selectItem itemValue="+16" itemLabel="Mayores de 16 años"/>
+                            <f:selectItem itemValue="+18" itemLabel="Mayores de 18 años"/>
+                        </h:selectOneMenu>
+                        <h:message for="peliClass"/>
+                        
+                        <h:outputLabel value="Idioma" for="peliIdio"/>
+                        <h:selectOneMenu value="#{altaPeliBean.peli.idiomaPel}" id="peliIdio" required="true">
+                            <f:selectItem itemValue="ESP" itemLabel="ESpañol"/>
+                            <f:selectItem itemValue="SUB" itemLabel="Subtitulado"/>
+                        </h:selectOneMenu>
+                        <h:message for="peliIdio"/>
+                        
+                        <h:outputLabel value="Dimencion" for="peliDim"/>
+                        <h:selectOneMenu value="#{altaPeliBean.peli.dimPel}" id="peliDim" required="true">
+                            <f:selectItem itemValue="2D" itemLabel="2D"/>
+                            <f:selectItem itemValue="3D" itemLabel="3D"/>
+                        </h:selectOneMenu>
+                        
+                        
+                        
+                        
+                        <!--Subir Imagen-->
+                        <h:outputLabel value="Imagen" for="fil"/>
+                        <p:fileUpload value="#{altaPeliBean.file}" mode="simple" id="fil"/>
+                        <p:growl id="messages" showDetail="true" />
+
+                    </h:panelGrid>
+
+                    <h:outputLabel value="Actores" for="peliActs"/>
+                    <br/>
+                    <p:inputTextarea rows="8"  cols="30" placeholder="Peres Juan, Ricardo Darin, etc..." 
+                                     counter="actCont" id="peliActs" 
+                                     value="#{altaPeliBean.peli.sinoPeli}"
+                                     maxlength="300" counterTemplate="{0} Caracteres" 
+                                     autoResize="false" />
+                    <br/>
+                    <h:outputText id="actCont" />
+
+                    <br/>
+                    <h:outputLabel value="Sinopsis" for="peliSinop"/>
+                    <br/>
+                    <p:inputTextarea rows="8"  cols="80" placeholder="Sinopsis" counter="display" id="peliSinop" 
+                                     value="#{altaPeliBean.peli.sinoPeli}"
+                                     maxlength="600" counterTemplate="{0} Caracteres" 
+                                     autoResize="false" />
+                    <br/>
+                    <h:outputText id="display" />
+                    <br/>
+
+                    <h:commandButton action="#{altaPeliBean.insertar()}" value="Guardar"></h:commandButton>
+                </h:form>
+                <!--
+                <h:graphicImage value="/images/camara-digital-pequena-mundo_1_892558.jpg"></h:graphicImage>
+                -->
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
+

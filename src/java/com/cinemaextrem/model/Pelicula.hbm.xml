@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/06/2016 02:41:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.cinemaextrem.model.Pelicula" table="pelicula" catalog="extrem" optimistic-lock="version">
+        <id name="idPel" type="java.lang.Integer">
+            <column name="idPel" />
+            <generator class="identity" />
+        </id>
+        <property name="titPel" type="string">
+            <column name="titPel" length="45" not-null="true">
+                <comment>T&#237;tulo de la pel&#237;cula.</comment>
+            </column>
+        </property>
+        <property name="genPel" type="string">
+            <column name="genPel" length="20">
+                <comment>G&#233;nero de pel&#237;cula, como por ejemplo Acci&#243;n, terror, comedia, etc.</comment>
+            </column>
+        </property>
+        <property name="sinoPeli" type="string">
+            <column name="sinoPeli" length="600">
+                <comment>Descripci&#243;n de la trama o sinopsis de la pel&#237;cula. Como m&#225;ximo 600 caracteres</comment>
+            </column>
+        </property>
+        <property name="actPel" type="string">
+            <column name="actPel" length="300" />
+        </property>
+        <property name="dirPel" type="string">
+            <column name="dirPel" length="30" />
+        </property>
+        <property name="durPeli" type="java.lang.Integer">
+            <column name="DurPeli" />
+        </property>
+        <property name="claPeli" type="string">
+            <column name="ClaPeli" length="4" />
+        </property>
+        <property name="idiomaPel" type="string">
+            <column name="IdiomaPel" length="4" />
+        </property>
+        <property name="dimPel" type="string">
+            <column name="DimPel" length="3" />
+        </property>
+        <property name="estPel" type="java.lang.Integer">
+            <column name="estPel" />
+        </property>
+        <set name="funcions" table="funcion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPel" not-null="true" />
+            </key>
+            <one-to-many class="com.cinemaextrem.model.Funcion" />
+        </set>
+    </class>
+</hibernate-mapping>

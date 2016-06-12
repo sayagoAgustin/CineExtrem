@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/06/2016 02:41:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.cinemaextrem.model.Pelipuntos" table="pelipuntos" catalog="extrem" optimistic-lock="version">
+        <id name="idPp" type="java.lang.Integer">
+            <column name="idPP" />
+            <generator class="identity" />
+        </id>
+        <property name="idPel" type="java.lang.Integer">
+            <column name="IdPel" />
+        </property>
+        <property name="idUsr" type="java.lang.Integer">
+            <column name="idUsr" />
+        </property>
+        <property name="puntaje" type="java.lang.Integer">
+            <column name="Puntaje" />
+        </property>
+    </class>
+</hibernate-mapping>

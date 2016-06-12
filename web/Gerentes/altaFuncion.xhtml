@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="/resources/templates/default/principalTemp.xhtml">
+            <ui:define name="content">
+               
+
+                <h:form id="segundo">
+                    <p:growl id="msGlowl" showDetail="true" />
+
+                    <p:outputLabel value="Pelicula" for="autoPeli"/>
+                    <p:autoComplete id="autoPeli" value="#{autoComplete.pelis}" 
+                                    completeMethod="#{autoComplete.completePeli}" var="peli" 
+                                    itemLabel="#{peli.titPel}" itemValue="#{peli}" 
+                                    placeholder="Seleccione una peli.."
+                                    converter="peliConverter">
+
+                        <p:column style="width: 20%; text-align: center">
+                            <p:graphicImage value="/images/movies/#{peli.idPel}.jpg" width="40" height="50"/>
+                        </p:column>
+
+                        <p:column style="width: 80%; text-align: center">
+                            #{peli.titPel}
+                        </p:column>
+                    </p:autoComplete>
+
+                    <!-- -->
+                    <h:selectOneMenu value="#{salaSelecteOneView.sala}" converter="salaConverter">
+                        <f:selectItem itemLabel="seleccione sala"/>
+                        <f:selectItems value="#{salaSelecteOneView.salas}" 
+                                       var="sala" itemLabel="Sala #{sala.nroSala}" 
+                                       itemValue="#{sala}"/>
+                        <p:ajax listener="#{funcionEvnto.inicializar}" update="funEvento"/>
+                    </h:selectOneMenu>
+
+                    <h:panelGrid columnClasses="value">
+                        <h3 style="margin-top: 0">Editable Schedule</h3>
+
+                        <p:schedule id="funEvento" value="#{funcionEvnto.funModel}" widgetVar="calendarioF" timeZone="GMT-3">
+                            <p:ajax event="eventSelect" listener="#{funcionEvnto.alSeleccionarFuncion}" update="fundatal" 
+                                    oncomplete="PF('fDialogEvent').show();"/>
+                            <p:ajax event="dateSelect" listener="#{funcionEvnto.alMover}" update="fundatal" 
+                                    oncomplete="PF('fDialogEvent').show();"/>
+                        </p:schedule>
+
+
+                        <p:dialog widgetVar="fDialogEvent" header="FUNCION" resizable="false" modal="true" showEffect="clip">
+                            <p:outputPanel id="fundatal">
+                                <h:panelGrid columns="2">
+
+                                    <h:outputLabel value="Idioma" for="peliIdio"/>
+                                    <h:selectOneMenu value="#{funcionEvnto.funcion.idiomaPel}" id="peliIdio" required="true">
+                                        <f:selectItem itemValue="ESP" itemLabel="Español"/>
+                                        <f:selectItem itemValue="SUB" itemLabel="Subtitulado"/>
+                                    </h:selectOneMenu>
+
+                                    <p:outputLabel for="from" value="From:" />
+                                    <p:calendar id="from" value="#{funcionEvnto.funcion.fecFunI}" timeZone="GMT-3" pattern="yyyy/MM/dd HH:mm:ss"/>
+
+                                    <p:outputLabel for="to" value="To:" />
+                                    <p:calendar id="to" value="#{funcionEvnto.funcion.fecFunF}" timeZone="GMT-3" pattern="yyyy/MM/dd HH:mm:ss"/>
+
+
+
+                                    <p:commandButton type="reset" value="Reset" />
+                                    <p:commandButton id="addButton" value="Guardar" actionListener="#{funcionEvnto.guardar()}" update="funEvento" oncomplete="PF('fDialogEvent').hide();" />
+
+
+
+                                </h:panelGrid>
+                            </p:outputPanel>
+                        </p:dialog>
+                    </h:panelGrid>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
+
+<!-- <h:commandButton value="boton" action="#/{altaFuncionBean.verfic()}"></h:commandButton> -->

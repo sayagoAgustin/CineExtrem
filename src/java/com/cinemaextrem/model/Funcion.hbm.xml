@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/06/2016 02:41:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.cinemaextrem.model.Funcion" table="funcion" catalog="extrem" optimistic-lock="version">
+        <id name="idFun" type="java.lang.Integer">
+            <column name="idFun" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="pelicula" class="com.cinemaextrem.model.Pelicula" fetch="select">
+            <column name="idPel" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sala" class="com.cinemaextrem.model.Sala" fetch="select">
+            <column name="nroSala" not-null="true" />
+        </many-to-one>
+        <property name="dimPel" type="string">
+            <column name="dimPel" length="2" not-null="true" />
+        </property>
+        <property name="idiomaPel" type="string">
+            <column name="IdiomaPel" length="3" not-null="true" />
+        </property>
+        <property name="fecFunI" type="timestamp">
+            <column name="fecFunI" length="19" not-null="true" />
+        </property>
+        <property name="fecFunF" type="timestamp">
+            <column name="fecFunF" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/06/2016 02:41:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.cinemaextrem.model.Precios" table="precios" catalog="extrem" optimistic-lock="version">
+        <id name="idPrec" type="java.lang.Integer">
+            <column name="idPrec" />
+            <generator class="identity" />
+        </id>
+        <property name="dimPel" type="string">
+            <column name="dimPel" length="2" />
+        </property>
+        <property name="desPrec" type="string">
+            <column name="desPrec" length="45">
+                <comment>Descripcion</comment>
+            </column>
+        </property>
+        <property name="montPres" type="big_decimal">
+            <column name="montPres" precision="6" />
+        </property>
+    </class>
+</hibernate-mapping>

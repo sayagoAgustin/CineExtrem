@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/06/2016 02:41:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.cinemaextrem.model.Entrada" table="entrada" catalog="extrem" optimistic-lock="version">
+        <id name="idEnt" type="java.lang.Integer">
+            <column name="idEnt" />
+            <generator class="identity" />
+        </id>
+        <property name="idFac" type="java.lang.Integer">
+            <column name="IdFac" />
+        </property>
+        <property name="ubiBut" type="java.lang.Integer">
+            <column name="ubiBut" />
+        </property>
+        <property name="precEnt" type="big_decimal">
+            <column name="precEnt" precision="6" />
+        </property>
+    </class>
+</hibernate-mapping>

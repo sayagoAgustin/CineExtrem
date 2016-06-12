@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="extrem"/>
+  <table-filter match-name="pcanje"/>
+  <table-filter match-name="sala"/>
+  <table-filter match-name="funcion"/>
+  <table-filter match-name="pelipuntos"/>
+  <table-filter match-name="precios"/>
+  <table-filter match-name="factura"/>
+  <table-filter match-name="pelicula"/>
+  <table-filter match-name="pelicoment"/>
+  <table-filter match-name="entrada"/>
+</hibernate-reverse-engineering>
